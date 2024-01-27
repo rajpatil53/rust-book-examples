@@ -4,9 +4,9 @@ use std::{env, process};
 // cargo run > output.txt
 // cargo run -- to poem.txt > output.txt
 fn main() {
-    let args: Vec<String> = env::args().collect();
+    let args_iter = env::args();
 
-    let config = Config::build(&args).unwrap_or_else(|err| {
+    let config = Config::build(args_iter).unwrap_or_else(|err| {
         eprintln!("Problem parsing args: {err}");
         process::exit(1);
     });
